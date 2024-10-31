@@ -31,7 +31,13 @@
                 temp.innerHTML = resp
                 let url = temp.querySelector("div").textContent
                 temp.remove()
-                let filename = document.querySelector("#xy_app_content > div.ta-frame > div.ta_panel.ta_panel_group.ta_group > section > section > main > div > div.group-resource-body > div > div.disk_previewer_with_banner > div.common_node_content_banner.flex_panel.hor > h5").textContent
+                let filename
+                let h5 = document.querySelector("#xy_app_content > div.ta-frame > div.ta_panel.ta_panel_group.ta_group > section > section > main > div > div.group-resource-body > div > div.disk_previewer_with_banner > div.common_node_content_banner.flex_panel.hor > h5")
+                if (h5.title) {
+                    filename = h5.title
+                } else {
+                    filename = h5.textContent
+                }
                 const download = GM_download({
                     url: url,
                     name: filename,
